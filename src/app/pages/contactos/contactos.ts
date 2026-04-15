@@ -1,8 +1,8 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal, computed, OnInit } from '@angular/core';
 import { ContactosService } from '../../services/contactos';
 import { RouterLink } from '@angular/router';
 
-// 👇 IMPORTANTE
+// Angular Material
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -13,10 +13,12 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './contactos.html',
   styleUrl: './contactos.css',
 })
-export class Contactos {
+export class Contactos implements OnInit {
 
   servicio = inject(ContactosService);
-  contactos = this.servicio.getContactos();
+
+  //   usar el signal directamente
+  contactos = this.servicio.contactos;
 
   busqueda = signal('');
 
@@ -25,6 +27,11 @@ export class Contactos {
       c.nombre.toLowerCase().includes(this.busqueda().toLowerCase())
     )
   );
+
+  //  cargar datos del backend
+  ngOnInit() {
+    this.servicio.cargarContactos();
+  }
 
   eliminar(id: number) {
     if (confirm('¿Seguro que quieres eliminar este contacto?')) {

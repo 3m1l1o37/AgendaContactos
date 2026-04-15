@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ContactosService } from '../../services/contactos';
 
 @Component({
@@ -11,9 +12,9 @@ import { ContactosService } from '../../services/contactos';
 export class AgregarContacto {
 
   servicio = inject(ContactosService);
+  router = inject(Router);
 
   contacto = {
-    id: 0,
     nombre: '',
     telefono: '',
     email: ''
@@ -25,12 +26,12 @@ export class AgregarContacto {
       return;
     }
 
-    this.contacto.id = Date.now();
-
-    this.servicio.contactos.update(lista => [...lista, this.contacto]);
+    // 🔥 POST al backend
+    this.servicio.agregar(this.contacto);
 
     alert('Contacto agregado');
 
-    this.contacto = { id: 0, nombre: '', telefono: '', email: '' };
+    // 🔄 regresar a lista
+    this.router.navigate(['/contactos']);
   }
 }
