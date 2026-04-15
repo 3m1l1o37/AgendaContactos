@@ -1,0 +1,39 @@
+<div class="contacts-page">
+  <div class="contacts-header">
+    <h2 class="page-title">Lista de contactos</h2>
+    <p class="page-subtitle">Administra todos tus contactos desde aquí</p>
+  </div>
+
+  <div class="search-wrapper">
+    <span class="search-icon">🔍</span>
+    <input
+      class="search-input"
+      type="text"
+      placeholder="Buscar contacto..."
+      (input)="busqueda.set($any($event.target).value)"
+    >
+  </div>
+
+  <div class="contacts-list">
+    @for (c of contactosFiltrados(); track c.id) {
+      <div class="contact-card">
+        <div class="contact-card__avatar">{{ c.nombre.charAt(0).toUpperCase() }}</div>
+        <div class="contact-card__info">
+          <h3 class="contact-card__name">{{ c.nombre }}</h3>
+          <p class="contact-card__detail">📞 {{ c.telefono }}</p>
+          <p class="contact-card__detail">✉️ {{ c.email }}</p>
+        </div>
+        <div class="contact-card__actions">
+          <button class="action-btn action-btn--edit" [routerLink]="['/editar', c.id]">Editar</button>
+          <button class="action-btn action-btn--delete" (click)="eliminar(c.id)">Eliminar</button>
+        </div>
+      </div>
+    }
+    @if (contactosFiltrados().length === 0) {
+      <div class="empty-state">
+        <span class="empty-state__icon">📭</span>
+        <p class="empty-state__text">No se encontraron contactos</p>
+      </div>
+    }
+  </div>
+</div>

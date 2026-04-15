@@ -1,0 +1,112 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+.app-header {
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 28px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+}
+
+.brand-icon-wrap {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(102,126,234,.5);
+}
+
+.brand-icon-wrap .material-icons {
+  font-size: 22px;
+  color: #fff;
+}
+
+.brand-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: .3px;
+  background: linear-gradient(90deg, #fff, #c8d6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── NAV ── */
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-link {
+  padding: 8px 20px;
+  border-radius: 22px;
+  color: rgba(255,255,255,.75);
+  text-decoration: none;
+  font-size: .88rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all .25s;
+}
+
+.nav-link:hover {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  border-color: rgba(255,255,255,.2);
+}
+
+.nav-cta {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff !important;
+  font-weight: 600;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(102,126,234,.45);
+}
+
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(102,126,234,.6);
+  background: linear-gradient(135deg, #7b8ff5, #8b5cbf) !important;
+}
+
+/* ── MAIN ── */
+.app-content {
+  flex: 1;
+  max-width: 960px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 0 24px 80px;
+}
+
+@media (max-width: 600px) {
+  .brand-name { display: none; }
+  .nav-link { padding: 8px 13px; font-size: .82rem; }
+  .app-content { margin: 20px auto; }
+}
