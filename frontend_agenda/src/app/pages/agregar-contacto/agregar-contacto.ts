@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ContactosService } from '../../services/contactos';
+import Swal from 'sweetalert2';
 
 @Component({
   standalone: true,
@@ -22,16 +23,31 @@ export class AgregarContacto {
 
   guardar() {
     if (!this.contacto.nombre || !this.contacto.telefono || !this.contacto.email) {
-      alert('Todos los campos son obligatorios');
+
+      Swal.fire({
+        title: 'Campos incompletos',
+        text: 'Todos los campos son obligatorios',
+        icon: 'warning'
+      });
+
       return;
     }
 
-    //  POST al backend
+    // POST al backend
     this.servicio.agregar(this.contacto);
 
-    alert('Contacto agregado');
+    // Éxito
+    Swal.fire({
+      title: '¡Guardado!',
+      text: 'El contacto fue agregado correctamente',
+      icon: 'success',
+      timer: 1500,
+      showConfirmButton: false
+    });
 
-    //  regresar a lista
-    this.router.navigate(['/contactos']);
+    // Redirigir después de un pequeño delay
+    setTimeout(() => {
+      this.router.navigate(['/contactos']);
+    }, 1500);
   }
 }

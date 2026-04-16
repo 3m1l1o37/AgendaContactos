@@ -6,6 +6,7 @@ import { ContactoCard } from '../../components/contacto-card/contacto-card';
 // Angular Material
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contactos',
@@ -34,9 +35,20 @@ export class Contactos implements OnInit {
   }
 
   eliminar(id: number) {
-    if (confirm('¿Seguro que quieres eliminar este contacto?')) {
-      this.servicio.eliminar(id);
-    }
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'No podrás revertir esta acción',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.servicio.eliminar(id);
+
+        Swal.fire('Eliminado', 'El contacto fue eliminado', 'success');
+      }
+    });
   }
 
   editar(id: number) {

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ContactosService } from '../../services/contactos';
 import { Contacto } from '../../models/contacto';
+import Swal from 'sweetalert2';
 
 @Component({
   standalone: true,
@@ -26,10 +27,10 @@ export class EditarContacto implements OnInit {
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    // 🔥 cargar datos del backend
+    //  cargar datos del backend
     this.servicio.cargarContactos();
 
-    // ⏱️ esperar a que carguen
+    // ⏱ esperar a que carguen
     setTimeout(() => {
       const encontrado = this.servicio.contactos()
         .find((c) => c.id === id);
@@ -42,7 +43,17 @@ export class EditarContacto implements OnInit {
 
   guardar() {
     this.servicio.actualizar(this.contacto);
-    alert('Contacto actualizado');
-    this.router.navigate(['/contactos']);
+
+    Swal.fire({
+      title: '¡Actualizado!',
+      text: 'El contacto se actualizó correctamente',
+      icon: 'success',
+      timer: 1500,
+      showConfirmButton: false
+    });
+
+    setTimeout(() => {
+      this.router.navigate(['/contactos']);
+    }, 1500);
   }
 }

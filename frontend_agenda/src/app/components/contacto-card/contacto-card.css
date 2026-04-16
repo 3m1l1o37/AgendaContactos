@@ -81,3 +81,8 @@
   background: var(--bg-error-hover);
   transform: translateY(-1px);
 }
+
+.contact-avatar {
+  border-radius: 50%;
+  margin-right: 10px;
+}
