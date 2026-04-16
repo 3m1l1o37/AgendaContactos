@@ -26,12 +26,12 @@ export class AgregarContacto {
       return;
     }
 
-    // 🔥 POST al backend
+    //  POST al backend
     this.servicio.agregar(this.contacto);
 
     alert('Contacto agregado');
 
-    // 🔄 regresar a lista
+    //  regresar a lista
     this.router.navigate(['/contactos']);
   }
 }
