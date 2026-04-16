@@ -1,1 +1,12 @@
-<p>contacto-card works!</p>
+<div class="contact-card" [title]="contacto.nombre"> <!-- NOTA Property binding: Asigna el nombre del contacto como tooltip al pasar el mouse sobre la tarjeta -->
+  <div class="contact-card__avatar">{{ contacto.nombre.charAt(0).toUpperCase() }}</div> <!-- NOTA Interpolación: Muestra la inicial del nombre del contacto -->
+  <div class="contact-card__info">
+    <h3 class="contact-card__name">{{ contacto.nombre }}</h3> <!-- NOTA Interpolación: Muestra el nombre completo del contacto -->
+    <p class="contact-card__detail">📞 {{ contacto.telefono }}</p> <!-- NOTA Interpolación: Muestra el teléfono del contacto -->
+    <p class="contact-card__detail">✉️ {{ contacto.email }}</p> <!-- NOTA Interpolación: Muestra el email del contacto -->
+  </div>
+  <div class="contact-card__actions">
+    <button class="action-btn action-btn--edit" (click)="editar()">Editar</button> <!-- NOTA Event binding: Maneja el clic para editar -->
+    <button class="action-btn action-btn--delete" (click)="eliminar()">Eliminar</button> <!-- NOTA Event binding: Maneja el clic para eliminar -->
+  </div>
+</div>

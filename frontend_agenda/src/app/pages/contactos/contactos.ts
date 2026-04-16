@@ -1,6 +1,7 @@
 import { Component, inject, signal, computed, OnInit } from '@angular/core';
 import { ContactosService } from '../../services/contactos';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { ContactoCard } from '../../components/contacto-card/contacto-card';
 
 // Angular Material
 import { MatCardModule } from '@angular/material/card';
@@ -9,14 +10,13 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-contactos',
   standalone: true,
-  imports: [RouterLink, MatCardModule, MatButtonModule],
+  imports: [MatCardModule, MatButtonModule, ContactoCard],
   templateUrl: './contactos.html',
   styleUrl: './contactos.css',
 })
 export class Contactos implements OnInit {
 
-  servicio = inject(ContactosService);
-
+  servicio = inject(ContactosService);  router = inject(Router);
   //   usar el signal directamente
   contactos = this.servicio.contactos;
 
@@ -37,5 +37,9 @@ export class Contactos implements OnInit {
     if (confirm('¿Seguro que quieres eliminar este contacto?')) {
       this.servicio.eliminar(id);
     }
+  }
+
+  editar(id: number) {
+    this.router.navigate(['/editar', id]);
   }
 }

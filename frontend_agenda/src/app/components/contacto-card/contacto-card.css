@@ -1,0 +1,83 @@
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.contact-card:hover {
+  border-color: rgba(139,92,246,0.2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.contact-card__avatar {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--gradient-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.contact-card__info { flex: 1; min-width: 0; }
+
+.contact-card__name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.contact-card__detail {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-card__actions { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
+
+.action-btn {
+  padding: 7px 16px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.action-btn--edit {
+  background: var(--gradient-btn);
+  color: #fff;
+}
+
+.action-btn--edit:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-btn);
+}
+
+.action-btn--delete {
+  background: var(--bg-error);
+  color: #fff;
+}
+
+.action-btn--delete:hover {
+  background: var(--bg-error-hover);
+  transform: translateY(-1px);
+}

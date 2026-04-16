@@ -11,23 +11,12 @@
       type="text"
       placeholder="Buscar contacto..."
       (input)="busqueda.set($any($event.target).value)"
-    >
+    > <!-- NOTA Event binding: Actualiza el signal de busqueda cada vez que el usuario escribe -->
   </div>
 
   <div class="contacts-list">
     @for (c of contactosFiltrados(); track c.id) {
-      <div class="contact-card">
-        <div class="contact-card__avatar">{{ c.nombre.charAt(0).toUpperCase() }}</div>
-        <div class="contact-card__info">
-          <h3 class="contact-card__name">{{ c.nombre }}</h3>
-          <p class="contact-card__detail">📞 {{ c.telefono }}</p>
-          <p class="contact-card__detail">✉️ {{ c.email }}</p>
-        </div>
-        <div class="contact-card__actions">
-          <button class="action-btn action-btn--edit" [routerLink]="['/editar', c.id]">Editar</button>
-          <button class="action-btn action-btn--delete" (click)="eliminar(c.id)">Eliminar</button>
-        </div>
-      </div>
+      <app-contacto-card [contacto]="c" (onEdit)="editar($event)" (onDelete)="eliminar($event)"></app-contacto-card> <!-- NOTA Property binding: Pasa el contacto al componente, Event binding: Escucha eventos de editar y eliminar -->
     }
     @if (contactosFiltrados().length === 0) {
       <div class="empty-state">
