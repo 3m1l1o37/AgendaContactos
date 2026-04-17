@@ -21,7 +21,8 @@ export class EditarContacto implements OnInit {
     id: 0,
     nombre: '',
     telefono: '',
-    email: ''
+    email: '',
+    pais: ''
   };
 
   ngOnInit() {
