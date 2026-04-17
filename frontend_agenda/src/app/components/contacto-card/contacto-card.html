@@ -1,4 +1,4 @@
-<div class="contact-card" [title]="contacto.nombre"> <!-- NOTA Property binding: Asigna el nombre del contacto como tooltip al pasar el mouse sobre la tarjeta -->
+<div class="contact-card" (click)="verDetalle()" [title]="contacto.nombre"> <!-- NOTA Property binding: Asigna el nombre del contacto como tooltip al pasar el mouse sobre la tarjeta -->
   <!-- <div class="contact-card__avatar">{{ contacto.nombre.charAt(0).toUpperCase() }}</div> NOTA Interpolación: Muestra la inicial del nombre del contacto -->
    <img 
     class="contact-avatar"
@@ -15,7 +15,7 @@
     <p class="contact-card__detail">🌎 {{ contacto.pais }}</p>
   </div>
   <div class="contact-card__actions">
-    <button class="action-btn action-btn--edit" (click)="editar()">Editar</button> <!-- NOTA Event binding: Maneja el clic para editar -->
-    <button class="action-btn action-btn--delete" (click)="eliminar()">Eliminar</button> <!-- NOTA Event binding: Maneja el clic para eliminar -->
+    <button class="action-btn action-btn--edit" (click)="editar($event)">Editar</button> <!-- NOTA Event binding: Maneja el clic para editar -->
+    <button class="action-btn action-btn--delete" (click)="eliminar($event)">Eliminar</button> <!-- NOTA Event binding: Maneja el clic para eliminar -->
   </div>
 </div>

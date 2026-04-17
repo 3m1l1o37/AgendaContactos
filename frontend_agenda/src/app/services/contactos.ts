@@ -65,4 +65,9 @@ export class ContactosService {
     this.http.delete(`${this.apiUrl}/${id}`)
       .subscribe(() => this.cargarContactos());
   }
+
+  //obtener por id los detalles de un contacto
+  getById(id: number) {
+    return this.http.get<any>(`http://localhost:3000/api/contactos/${id}`);
+  }
 }

@@ -40,6 +40,7 @@ export class AgregarContacto implements OnInit{
     }
 
     // POST al backend
+    console.log(this.contacto); // ]ver en consola el objeto que se guarda
     this.servicio.agregar(this.contacto);
 
     // Éxito

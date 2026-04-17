@@ -1,1 +1,21 @@
-<p>detalle-contacto works!</p>
+@if (cargando) {
+  <div class="detalle-container">
+    <p>Cargando...</p>
+  </div>
+}
+
+@if (!cargando && contacto) {
+  <div class="detalle-container">
+
+    <h2>👤 {{ contacto.nombre }}</h2>
+
+    <p>📞 {{ contacto.telefono }}</p>
+    <p>✉️ {{ contacto.email }}</p>
+
+    <p>
+      <img [src]="contacto.bandera" width="25" />
+      {{ contacto.pais }}
+    </p>
+
+  </div>
+}
