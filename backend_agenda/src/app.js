@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import contactosRoutes from './routes/contactos.routes.js';
-console.log("DATABASE_URL:", process.env.DATABASE_URL);
+console.log("DATABASE_URL:", process.env.MYSQL_URL);
 const app = express();
 
 app.use(cors());
