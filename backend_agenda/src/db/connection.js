@@ -16,4 +16,4 @@ dotenv.config();
 // });
 
 console.log("SIN DB TEST");
-export default pool;
+//export default pool;
