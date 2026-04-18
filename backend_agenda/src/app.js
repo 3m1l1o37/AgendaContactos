@@ -8,10 +8,14 @@ app.use(express.json());
 
 app.use('/api', contactosRoutes);
 
+app.get('/ping', (req, res) => {
+  res.json({ ok: true });
+});
 // 🚨 PUERTO DINÁMICO (CLAVE)
 const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, "0.0.0.0", () => {
+console.log("PORT REAL:", process.env.PORT);
+app.listen(PORT,  () => {
+  console.log("PORT REAL:", process.env.PORT);
   console.log(`Servidor corriendo en puerto ${PORT}`);
 });
 
