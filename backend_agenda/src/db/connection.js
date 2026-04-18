@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const dbUrl = new URL(process.env.MYSQL_URL);
-
+console.log("MYSQL_URL:", process.env.MYSQL_URL);
 const pool = mysql.createPool({
   host: dbUrl.hostname,
   user: dbUrl.username,
