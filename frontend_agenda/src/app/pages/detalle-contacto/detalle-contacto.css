@@ -1,0 +1,90 @@
+/* CONTENEDOR */
+.detalle-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  display: flex;
+  justify-content: center;
+}
+
+/* CARD */
+.detalle-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 40px 32px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+
+  background: linear-gradient(
+    135deg,
+    rgba(139,92,246,0.08),
+    rgba(236,72,153,0.05)
+  );
+
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.detalle-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139,92,246,0.25);
+}
+
+/* AVATAR */
+.detalle-avatar {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  border: 3px solid rgba(139,92,246,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.detalle-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* NOMBRE */
+.detalle-nombre {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+/* INFO */
+.detalle-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* PAÍS */
+.detalle-pais {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.detalle-pais img {
+  width: 22px;
+  height: 16px;
+  border-radius: 3px;
+}
+
+/* LOADING */
+.detalle-loading {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}

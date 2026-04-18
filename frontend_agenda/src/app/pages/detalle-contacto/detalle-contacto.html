@@ -1,4 +1,4 @@
-@if (cargando) {
+<!-- @if (cargando) {
   <div class="detalle-container">
     <p>Cargando...</p>
   </div>
@@ -16,6 +16,45 @@
       <img [src]="contacto.bandera" width="25" />
       {{ contacto.pais }}
     </p>
+
+  </div>
+} -->
+
+
+@if (cargando) {
+  <div class="detalle-container">
+    <div class="detalle-card">
+      <p class="detalle-loading">Cargando...</p>
+    </div>
+  </div>
+}
+
+@if (!cargando && contacto) {
+  <div class="detalle-container">
+
+    <div class="detalle-card">
+
+      <!-- AVATAR -->
+      <div class="detalle-avatar">
+        <img 
+          [src]="avatarService.getAvatar(contacto.nombre)" 
+          alt="avatar"
+        >
+      </div>
+
+      <!-- INFO -->
+      <h2 class="detalle-nombre">{{ contacto.nombre }}</h2>
+
+      <div class="detalle-info">
+        <p>📞 {{ contacto.telefono }}</p>
+        <p>✉️ {{ contacto.email }}</p>
+
+        <p class="detalle-pais">
+          {{ contacto.pais }}
+        </p>
+      </div>
+
+    </div>
 
   </div>
 }

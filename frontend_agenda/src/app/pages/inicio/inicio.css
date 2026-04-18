@@ -151,3 +151,106 @@
   margin-bottom: 10px;
 }
 .feature-card__desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+
+.footer {
+  position: relative;
+  width: 100%;
+  padding: 60px 24px 30px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ORBS tipo hero */
+.footer__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.footer__orb--1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(124,58,237,0.15), transparent 70%);
+  top: -80px;
+  left: 30%;
+}
+
+.footer__orb--2 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(236,72,153,0.12), transparent 70%);
+  bottom: -60px;
+  right: 20%;
+}
+
+/* CONTENIDO */
+.footer__content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(139,92,246,0.06), rgba(236,72,153,0.04));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 40px 36px;
+}
+
+/* TOP */
+.footer__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* BRAND */
+.footer__title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.footer__desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  max-width: 320px;
+}
+
+/* LINKS */
+.footer__links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer__link {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: all var(--transition);
+}
+
+.footer__link:hover {
+  background: rgba(139,92,246,0.12);
+  color: var(--accent-light);
+}
+
+/* BOTTOM */
+.footer__bottom {
+  margin-top: 30px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer__copy {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
