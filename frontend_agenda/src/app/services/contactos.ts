@@ -34,7 +34,7 @@ import { Contacto } from '../models/contacto';
 })
 export class ContactosService {
 
-  private apiUrl = 'http://localhost:3000/api/contactos';
+  private apiUrl = 'http://endearing-reprieve-production-b1c7.up.railway.app/api/contactos';
 
   contactos = signal<Contacto[]>([]);
 
@@ -67,7 +67,10 @@ export class ContactosService {
   }
 
   //obtener por id los detalles de un contacto
+  // getById(id: number) {
+  //   return this.http.get<any>(`http://localhost:3000/api/contactos/${id}`);
+  // }
   getById(id: number) {
-    return this.http.get<any>(`http://localhost:3000/api/contactos/${id}`);
-  }
+  return this.http.get<any>(`${this.apiUrl}/${id}`);
+}
 }
