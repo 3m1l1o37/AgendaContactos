@@ -1,4 +1,4 @@
-import { Component, inject, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ContactosService } from '../../services/contactos';
@@ -11,8 +11,7 @@ import { PaisService } from '../../services/pais.service';
   templateUrl: './agregar-contacto.html',
   styleUrl: './agregar-contacto.css'
 })
-export class AgregarContacto implements OnInit{
-  
+export class AgregarContacto implements OnInit {
 
   servicio = inject(ContactosService);
   router = inject(Router);
@@ -26,36 +25,38 @@ export class AgregarContacto implements OnInit{
     pais: ''
   };
 
-  
   guardar() {
-    if (!this.contacto.nombre || !this.contacto.telefono || !this.contacto.email || !this.contacto.pais) {
-
+    if (!this.contacto.nombre || !this.contacto.telefono ||
+        !this.contacto.email || !this.contacto.pais) {
       Swal.fire({
         title: 'Campos incompletos',
         text: 'Todos los campos son obligatorios',
         icon: 'warning'
       });
-
       return;
     }
 
-    // POST al backend
-    console.log(this.contacto); // ]ver en consola el objeto que se guarda
-    this.servicio.agregar(this.contacto);
-
-    // Éxito
-    Swal.fire({
-      title: '¡Guardado!',
-      text: 'El contacto fue agregado correctamente',
-      icon: 'success',
-      timer: 1500,
-      showConfirmButton: false
+    this.servicio.agregar(this.contacto).subscribe({
+      next: () => {
+        this.servicio.cargarContactos();
+        Swal.fire({
+          title: '¡Guardado!',
+          text: 'El contacto fue agregado correctamente',
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false
+        });
+        setTimeout(() => this.router.navigate(['/contactos']), 1500);
+      },
+      error: (err) => {
+        console.error('Error al guardar:', err);
+        Swal.fire({
+          title: 'Error',
+          text: 'No se pudo guardar el contacto. Intenta de nuevo.',
+          icon: 'error'
+        });
+      }
     });
-
-    // Redirigir después de un pequeño delay
-    setTimeout(() => {
-      this.router.navigate(['/contactos']);
-    }, 1500);
   }
 
   ngOnInit() {
