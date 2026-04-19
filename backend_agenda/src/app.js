@@ -3,7 +3,12 @@ import cors from 'cors';
 import contactosRoutes from './routes/contactos.routes.js';
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:4200',
+    'https://TU-PROYECTO.netlify.app'  // ← cambia por tu URL de Netlify
+  ]
+}));
 app.use(express.json());
 
 app.use('/api', contactosRoutes);
