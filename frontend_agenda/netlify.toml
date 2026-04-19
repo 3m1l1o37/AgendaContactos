@@ -1,0 +1,3 @@
+[build]
+  command = "npm install && ng build --output-mode=static"
+  publish = "dist/agenda-contactos/browser"
