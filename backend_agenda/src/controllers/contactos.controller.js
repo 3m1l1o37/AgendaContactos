@@ -6,13 +6,12 @@ export const getContactos = async (req, res) => {
 };
 
 export const getContacto = async (req, res) => {
-  // const { id } = req.params;
-  // const [rows] = await pool.query(
-  //   'SELECT * FROM contactos WHERE id = ?',
-  //   [id]
-  // );
-  // res.json(rows[0]);
-  res.json([{ ok: true }]);
+  const { id } = req.params;
+  const [rows] = await pool.query(
+    'SELECT * FROM contactos WHERE id = ?',
+    [id]
+  );
+  res.json(rows[0]);
 };
 
 export const createContacto = async (req, res) => {

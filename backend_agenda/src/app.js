@@ -13,9 +13,9 @@ app.get('/ping', (req, res) => {
 });
 // 🚨 PUERTO DINÁMICO (CLAVE)
 const PORT = process.env.PORT || 3000;
-console.log("PORT REAL:", process.env.PORT);
+
 app.listen(PORT,  () => {
-  console.log("PORT REAL:", process.env.PORT);
+  
   console.log(`Servidor corriendo en puerto ${PORT}`);
 });
 
