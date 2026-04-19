@@ -27,34 +27,34 @@ export class EditarContacto implements OnInit {
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-
-    //  cargar datos del backend
-    this.servicio.cargarContactos();
-
-    // ⏱ esperar a que carguen
-    setTimeout(() => {
-      const encontrado = this.servicio.contactos()
-        .find((c) => c.id === id);
-
-      if (encontrado) {
-        this.contacto = { ...encontrado };
+    this.servicio.getById(id).subscribe((data) => {
+      if (data) {
+        this.contacto = data;
       }
-    }, 300);
+    });
   }
 
   guardar() {
-    this.servicio.actualizar(this.contacto);
-
-    Swal.fire({
-      title: '¡Actualizado!',
-      text: 'El contacto se actualizó correctamente',
-      icon: 'success',
-      timer: 1500,
-      showConfirmButton: false
+    this.servicio.actualizar(this.contacto).subscribe({
+      next: () => {
+        this.servicio.cargarContactos();
+        Swal.fire({
+          title: '¡Actualizado!',
+          text: 'El contacto se actualizó correctamente',
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false
+        });
+        setTimeout(() => this.router.navigate(['/contactos']), 1500);
+      },
+      error: (err) => {
+        console.error('Error al actualizar:', err);
+        Swal.fire({
+          title: 'Error',
+          text: 'No se pudo actualizar el contacto. Intenta de nuevo.',
+          icon: 'error'
+        });
+      }
     });
-
-    setTimeout(() => {
-      this.router.navigate(['/contactos']);
-    }, 1500);
   }
 }
