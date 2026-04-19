@@ -5,7 +5,7 @@ export const getContactos = async (req, res) => {
   res.json(rows);
 };
 
-export const getContacto = async (req, res) => {
+/*export const getContacto = async (req, res) => {
   const { id } = req.params;
   const [rows] = await pool.query(
   'SELECT * FROM contactos WHERE id = ?',
@@ -13,7 +13,7 @@ export const getContacto = async (req, res) => {
   );
   res.json(rows[0]);
   res.json([{ ok: true }]);
-};
+};*/
 
 export const createContacto = async (req, res) => {
   const { nombre, telefono, email, pais } = req.body;
