@@ -35,7 +35,7 @@ import { Contacto } from '../models/contacto';
 export class ContactosService {
 
   private apiUrl = 'https://endearing-reprieve-production-b1c7.up.railway.app/api/contactos';
-
+  
   contactos = signal<Contacto[]>([]);
 
   constructor(private http: HttpClient) {}
